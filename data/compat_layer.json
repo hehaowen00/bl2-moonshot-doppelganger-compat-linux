@@ -1,0 +1,126 @@
+{
+ "schema": 1,
+ "source": "Moonshot compatibility layer for the third-party Doppelganger mod: the 0.9.2 r2 edits plus the shared-root fix (0.9.4 r2)",
+ "target": "sdk_mods/moonshot/__init__.py",
+ "backup_prefix": ".pre-doppelcompat-",
+ "hunks": [
+  {
+   "kind": "replace",
+   "witness": "def _foreign_character(text):",
+   "anchor": "def _our_class(cls_s):\n    low = str(cls_s).lower()\n",
+   "new": "# ==================== DOPPELGANGER COMPAT (another dev's Jack) ====================\n# Names that belong to the third-party \"Doppelganger\" mod, never to Moonshot.  Ours is a TPS port\n# (Quince_Doppel.Character.charclass_doppelganger); his is a BL2 rebuild constructed at runtime from\n# Gaige and living in GD_Doppelganger_Package.  Our menu matcher accepts the loose tokens \"doppel\" /\n# \"doppelganger\" / \"jack\", all of which his class string contains, so without this it answered for his\n# character and dressed his class-select mannequin as TPS Jack.\n_FOREIGN_CHAR_MARKERS = (\n    \"gd_doppelganger_package\",\n    \"gd_doppelganger_streaming\",\n    \"gd_doppelganger_skills\",\n    \"gd_doppelganger_ui\",\n    \"packagedef_doppelganger\",\n    \"characterdef_doppelganger\",\n    \"playernameid_doppelganger\",\n    \"playerclassid_doppelganger\",\n)\n\n\ndef _foreign_character(text):\n    \"\"\"True when this class / save string names another mod's character, not ours.\"\"\"\n    if not _flags().get(\"doppel_compat\", True):\n        return False\n    low = str(text or \"\").lower()\n    return any(m in low for m in _FOREIGN_CHAR_MARKERS)\n\n\ndef _foreign_doppel_present():\n    \"\"\"Is the third-party Doppelganger registered in this session?  Absent = plain Moonshot.\"\"\"\n    if not _flags().get(\"doppel_compat\", True):\n        return False\n    try:\n        if _find(\"GD_Doppelganger_Package.Doppelganger\") is not None:\n            return True\n    except Exception:                                     # noqa: BLE001\n        pass\n    try:\n        for wg in unrealsdk.find_all(\"WillowGlobals\", exact=False):\n            if \"Default__\" in str(wg):\n                continue\n            for c in list(wg.PlayerNameIdentifiers):\n                if c is None:\n                    continue\n                s = str(c)\n                nm = s.split(\".\")[-1].rstrip(chr(39))\n                if nm in _OUR_CARDS or nm in _ROSTER_SORT:\n                    continue\n                if \"doppel\" in s.lower():\n                    return True\n            break\n    except Exception:                                     # noqa: BLE001\n        pass\n    return False\n\n\ndef _our_class(cls_s):\n    low = str(cls_s).lower()\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "in low and not _foreign_character(low):",
+   "anchor": "    if \"charclass_doppelganger\" in low:\n        return \"doppel\"\n",
+   "new": "    if \"charclass_doppelganger\" in low and not _foreign_character(low):\n        return \"doppel\"\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "if _foreign_character(low):\n        return None",
+   "anchor": "    low = str(class_text or \"\").lower()\n    for cfg in _MENU_PREVIEW_CFGS:\n",
+   "new": "    low = str(class_text or \"\").lower()\n    if _foreign_character(low):\n        return None\n    for cfg in _MENU_PREVIEW_CFGS:\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "want < 10 and _foreign_doppel_present()",
+   "anchor": "            nm = str(c).split(\".\")[-1].rstrip(\"'\")\n            want = _ROSTER_SORT.get(nm)\n",
+   "new": "            nm = str(c).split(\".\")[-1].rstrip(\"'\")\n            want = _ROSTER_SORT.get(nm)\n            if want is not None and want < 10 and _foreign_doppel_present():\n                want += 10                    # yield the slot\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "if nm in (\"Doppelganger\", \"Doppelganger30\") and _foreign_doppel_present():",
+   "anchor": "                if nm in (\"Prototype30\", \"Doppelganger30\", \"Baroness30\"):\n",
+   "new": "                if nm in (\"Doppelganger\", \"Doppelganger30\") and _foreign_doppel_present():\n                    try:\n                        cur = str(c.CharacterName)\n                        if \"(TPS)\" not in cur:\n                            cur = cur + \" (TPS)\"\n                            c.CharacterName = cur\n                            relabeled += 1\n                    except Exception:\n                        pass\n                if nm in (\"Prototype30\", \"Doppelganger30\", \"Baroness30\"):\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "            or (\"doppelganger\" in cls_s.lower() and not _foreign_character(cls_s))\n            or \"Baroness\" in cls_s\n",
+   "anchor": "            or \"doppelganger\" in cls_s.lower()\n            or \"Baroness\" in cls_s\n",
+   "new": "            or (\"doppelganger\" in cls_s.lower() and not _foreign_character(cls_s))\n            or \"Baroness\" in cls_s\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "    elif \"doppelganger\" in cls_s.lower() and not _foreign_character(cls_s):\n",
+   "anchor": "    elif \"doppelganger\" in cls_s.lower():\n",
+   "new": "    elif \"doppelganger\" in cls_s.lower() and not _foreign_character(cls_s):\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "        return (pc is not None and \"doppelganger\" in str(pc.PlayerClass).lower()\n                and not _foreign_character(str(pc.PlayerClass)))\n",
+   "anchor": "        return pc is not None and \"doppelganger\" in str(pc.PlayerClass).lower()\n",
+   "new": "        return (pc is not None and \"doppelganger\" in str(pc.PlayerClass).lower()\n                and not _foreign_character(str(pc.PlayerClass)))\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "                and not _foreign_character(str(pc.PlayerClass))\n                and not _doppel_native_ui())\n",
+   "anchor": "                and \"doppelganger\" in str(pc.PlayerClass).lower()\n                and not _doppel_native_ui())\n",
+   "new": "                and \"doppelganger\" in str(pc.PlayerClass).lower()\n                and not _foreign_character(str(pc.PlayerClass))\n                and not _doppel_native_ui())\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "            or (\"doppelganger\" in cls_s.lower() and not _foreign_character(cls_s)) or \"Baroness\" in cls_s):\n",
+   "anchor": "            or \"doppelganger\" in cls_s.lower() or \"Baroness\" in cls_s):\n",
+   "new": "            or (\"doppelganger\" in cls_s.lower() and not _foreign_character(cls_s)) or \"Baroness\" in cls_s):\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "def _label_tps_jack(lines):",
+   "anchor": "def _our_class(cls_s):\n    low = str(cls_s).lower()\n",
+   "new": "def _label_tps_jack(lines):\n    \"\"\"While the other Doppelganger mod is installed, our Jack's two cards say (TPS).  -> fields changed.\n\n    LocalizedCharacterName is the text on the class-select tile.  CharacterName is identity: a tile\n    creates its character with LoadGame(\"default\" @ CharacterName), which keeps only the first word,\n    so ours becomes one word nobody else uses.  His mod answers for every card named \"Jack\".\"\"\"\n    if not _foreign_doppel_present():\n        return 0\n    card = next((c.get(\"card\") for c in CHARS2 if c.get(\"tag\") == \"doppel\"), None)\n    if not card:\n        return 0\n    n = 0\n    for tile in (_find(card), _find(card + \"30\")):\n        if tile is None:\n            continue\n        try:\n            name = str(tile.CharacterName or \"\").split(\" \")[0]\n            if name and not name.endswith(\"TPS\"):\n                tile.CharacterName = name + \"TPS\"\n                n += 1\n            shown = str(tile.LocalizedCharacterName or \"\")\n            if shown and \"(TPS)\" not in shown:\n                tile.LocalizedCharacterName = shown + \" (TPS)\"\n                n += 1\n        except Exception:                                 # noqa: BLE001\n            pass\n    if n and lines is not None:\n        lines.append(\"[doppel] tile relabelled for the other Doppelganger mod: Jack (TPS), \"\n                     + str(n) + \" field(s)\")\n    return n\n\n\ndef _our_class(cls_s):\n    low = str(cls_s).lower()\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "    if tag == \"doppel\":\n        _label_tps_jack(lines)\n",
+   "anchor": "    _construct_l30(lines, tag, cfg[\"l30\"], our_class, our_id, our_card,\n                   cfg[\"cid\"], cfg[\"card\"])\n",
+   "new": "    _construct_l30(lines, tag, cfg[\"l30\"], our_class, our_id, our_card,\n                   cfg[\"cid\"], cfg[\"card\"])\n    if tag == \"doppel\":\n        _label_tps_jack(lines)\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "refresh failed: {exc!r})\")\n    _label_tps_jack(lines)\n",
+   "anchor": "            lines.append(\"  (L30 profiles + lobby cards built at lobby)\")\n        except Exception as exc:\n            lines.append(f\"  (lobby L30 refresh failed: {exc!r})\")\n",
+   "new": "            lines.append(\"  (L30 profiles + lobby cards built at lobby)\")\n        except Exception as exc:\n            lines.append(f\"  (lobby L30 refresh failed: {exc!r})\")\n    _label_tps_jack(lines)\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "relabeled += _label_tps_jack(None)",
+   "anchor": "                if nm in (\"Doppelganger\", \"Doppelganger30\") and _foreign_doppel_present():\n                    try:\n                        cur = str(c.CharacterName)\n                        if \"(TPS)\" not in cur:\n                            cur = cur + \" (TPS)\"\n                            c.CharacterName = cur\n                            relabeled += 1\n                    except Exception:\n                        pass\n",
+   "new": "                if nm in (\"Doppelganger\", \"Doppelganger30\") and _foreign_doppel_present():\n                    relabeled += _label_tps_jack(None)\n"
+  },
+  {
+   "kind": "before",
+   "witness": "def _doppel_card_protect(reason):",
+   "anchor": "def _foreign_character(text):",
+   "new": "# Shared item-card data must outlive the character which supplied it.\n_DOPPEL_CARD_LISTS = (\n    \"GD_AttributePresentation._AttributeList.DefaultPresentationList\",\n    \"GD_AttributePresentation._AttributeList.ClassModOverridePresentationList\",\n)\n_doppel_card_refs = {}\n_doppel_card_reader = None\n\n\ndef _doppel_card_read(address, size):\n    \"\"\"Checked copy of pointer values; never wrap a borrowed native entry.\"\"\"\n    global _doppel_card_reader\n    import ctypes\n    if not address or size <= 0:\n        return None\n    if _doppel_card_reader is None:\n        kernel = ctypes.WinDLL(\"kernel32\", use_last_error=True)\n        kernel.GetCurrentProcess.argtypes = []\n        kernel.GetCurrentProcess.restype = ctypes.c_void_p\n        read = kernel.ReadProcessMemory\n        read.argtypes = [ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p,\n                         ctypes.c_size_t, ctypes.POINTER(ctypes.c_size_t)]\n        read.restype = ctypes.c_int\n        _doppel_card_reader = read, kernel.GetCurrentProcess()\n    read, process = _doppel_card_reader\n    buffer = ctypes.create_string_buffer(size)\n    copied = ctypes.c_size_t()\n    if not read(process, address, buffer, size, ctypes.byref(copied)):\n        return None\n    return buffer.raw if copied.value == size else None\n\n\ndef _doppel_card_addresses(array):\n    import ctypes\n    import struct\n    if ctypes.sizeof(ctypes.c_void_p) != 4 or array._type.ElementSize != 4:\n        return None\n    address = array._get_address()\n    header = _doppel_card_read(address, 12)\n    if header is None:\n        return None\n    data, count, capacity = struct.unpack(\"<Iii\", header)\n    if not 0 <= count <= capacity <= 4096 or count != len(array):\n        return None\n    body = _doppel_card_read(data, count * 4) if count else b\"\"\n    if body is None or _doppel_card_read(address, 12) != header:\n        return None\n    return struct.unpack(f\"<{count}I\", body)\n\n\ndef _doppel_card_protect(reason):\n    \"\"\"Protect both shared lists before the first save/map load, without a pawn.\n\n    The 2026-09-21 dump faults at native presentation lookup index 338;\n    that is the first third-party Jack entry in the restarted game's list.\n    Gameplay COM maintenance happens too late for a new Jack (TPS).\n    Only package data is rooted. No loads, pawn reads or native raw writes.\n    \"\"\"\n    if _teardown[0] or _stream.get(\"muted\"):\n        return False\n    dead_flags = 0x18000 | (0x20000002 << 32)\n    try:\n        batches = []\n        wanted = set()\n        for path in _DOPPEL_CARD_LISTS:\n            registry = _find(path)\n            if registry is None or int(registry.ObjectFlags) & dead_flags:\n                continue\n            array = registry.Attributes\n            addresses = _doppel_card_addresses(array)\n            if addresses is None:\n                _report([f\"[doppel-card] {reason}: pointer snapshot unavailable\"])\n                return False\n            batches.append((registry, array, addresses))\n            wanted.update(addresses)\n        wanted.discard(0)\n        live = {}\n        for address in wanted:\n            ref = _doppel_card_refs.get(address)\n            obj = ref() if ref is not None else None\n            if (obj is not None and obj._get_address() == address\n                    and not int(obj.ObjectFlags) & dead_flags):\n                live[address] = obj\n        missing = wanted - live.keys()\n        if missing:\n            for obj in unrealsdk.find_all(\"AttributePresentationDefinition\", exact=False):\n                address = obj._get_address()\n                if address in missing and not int(obj.ObjectFlags) & dead_flags:\n                    live[address] = obj\n                    _doppel_card_refs[address] = unrealsdk.unreal.WeakPointer(obj)\n        # Validate all snapshots before changing either shared list.\n        if any(_doppel_card_addresses(array) != addresses\n               for _, array, addresses in batches):\n            _report([f\"[doppel-card] {reason}: shared list changed; deferred\"])\n            return False\n        for obj in live.values():\n            obj.ObjectFlags |= KEEP_FLAG\n        removed = 0\n        for registry, array, addresses in batches:\n            registry.ObjectFlags |= KEEP_FLAG\n            invalid = sum(bool(a and a not in live) for a in addresses)\n            if invalid:\n                registry.Attributes = [live.get(a) for a in addresses]\n                removed += invalid\n        for address in tuple(_doppel_card_refs):\n            if address not in live:\n                _doppel_card_refs.pop(address, None)\n        if batches:\n            _report([f\"[doppel-card] {reason}: protected {len(live)} shared labels \"\n                     f\"in {len(batches)} lists; cleared {removed} invalid references\"])\n        return bool(batches)\n    except Exception as exc:\n        _report([f\"[doppel-card] {reason}: protection deferred: {type(exc).__name__}\"])\n        return False\n\n\n@hook(\"WillowGame.WillowGameViewportClient:NotifyDlcRefreshComplete\", Type.POST_UNCONDITIONAL)\ndef _doppel_card_after_dlc(obj, args, ret, func):\n    # The other mod appends its labels in PRE. Protect them before the\n    # frontend's later save load or a non-Jack pawn releases its referencer.\n    _doppel_card_protect(\"DLC refresh\")\n\n\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "_doppel_card_protect(\"before map travel\")",
+   "anchor": "        _keep.clear()\n        try:\n            pc.ConsoleCommand(\"obj garbage\")",
+   "new": "        _doppel_card_protect(\"before map travel\")\n        _keep.clear()\n        try:\n            pc.ConsoleCommand(\"obj garbage\")"
+  },
+  {
+   "kind": "before",
+   "witness": "def _doppel_own_root(lines):",
+   "anchor": "def _label_tps_jack(lines):",
+   "new": "# Doppelganger ships its own copy of Quince_Doppel_Skills.SkillTree.Branch_Actionskill_Doppelganger, the\n# root of our Jack's tree, with its Skill_DeathTrap in the action slot. Whichever package loads first owns\n# that path, so our Jack's action skill could become his and a loaded save's action point was dropped.\n_DOPPEL_TREE = \"Quince_Doppel_Streaming.SkillTree.SkillTree_Doppelganger\"\n_DOPPEL_ACTION = \"Quince_Doppel_Skills.ActionSkill.Skill_SummonDigiJack\"\n_FOREIGN_ACTION = \"GD_Doppelganger_Skills.Action.Skill_DeathTrap\"\n_DOPPEL_OWN_ROOT = \"Branch_Actionskill_MoonshotJack\"\n\n\ndef _doppel_own_root(lines):\n    \"\"\"Give our Jack's tree a root branch nobody else ships.  -> 1 when the tree was changed.\"\"\"\n    try:\n        tree = _find(_DOPPEL_TREE)\n        action = _find(_DOPPEL_ACTION)\n        root = tree.Root if tree is not None else None\n        if root is None or action is None:\n            return 0\n        own = root if str(root.Name) == _DOPPEL_OWN_ROOT else _cryo_mk(\n            \"SkillTreeBranchDefinition\", tree, _DOPPEL_OWN_ROOT, template=root)\n        if own is None:\n            return 0\n        changed = 0\n        tiers = own.Tiers\n        if len(tiers) and len(tiers[0].Skills):\n            tier = tiers[0]\n            if str(tier.Skills[0]) != str(action):\n                tier.Skills[0] = action\n                tiers[0] = tier                # nested struct arrays: write the element back\n                changed = 1\n        if str(tree.Root) != str(own):\n            tree.Root = own\n            changed = 1\n        _keep_obj(own)\n        if changed and lines is not None:\n            lines.append(\"[doppel] tree root is our own \" + _DOPPEL_OWN_ROOT\n                         + \" (action skill Skill_SummonDigiJack), not the other mod's copy\")\n        return changed\n    except Exception as exc:\n        if lines is not None:\n            lines.append(f\"[doppel] own tree root failed: {exc!r}\")\n        return 0\n\n\ndef _doppel_skill_alias(path, pc):\n    \"\"\"Our Jack's action-skill grade belongs on whichever root his live tree was built with.\"\"\"\n    if path not in (_DOPPEL_ACTION, _FOREIGN_ACTION):\n        return path\n    try:\n        if _our_class(str(pc.PlayerClass)) != \"doppel\":\n            return path\n        live = pc.PlayerSkillTree.GetActionSkill()\n        live_path = _gun_safety_path(live) if live is not None else \"\"\n        if live_path in (_DOPPEL_ACTION, _FOREIGN_ACTION):\n            return live_path\n    except Exception:\n        pass\n    return path\n\n\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "    _doppel_own_root(lines)\n    card = next(",
+   "anchor": "    if not _foreign_doppel_present():\n        return 0\n    card = next((c.get(\"card\") for c in CHARS2 if c.get(\"tag\") == \"doppel\"), None)\n",
+   "new": "    if not _foreign_doppel_present():\n        return 0\n    _doppel_own_root(lines)\n    card = next((c.get(\"card\") for c in CHARS2 if c.get(\"tag\") == \"doppel\"), None)\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "definition = _find(_doppel_skill_alias(path, pc))",
+   "anchor": "            for path, grade in wanted:\n                definition = _find(path)\n",
+   "new": "            for path, grade in wanted:\n                definition = _find(_doppel_skill_alias(path, pc))\n"
+  }
+ ],
+ "version_tags": [
+  "doppel-card-lifetime+doppel-compat+",
+  "doppel-own-root+"
+ ]
+}

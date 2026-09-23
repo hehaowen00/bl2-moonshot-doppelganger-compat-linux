@@ -1,0 +1,22 @@
+{
+ "schema": 1,
+ "source": "Moonshot compatibility patch for Doppelganger 0.9.4: register the map-change hooks (r8)",
+ "target": "sdk_mods/Doppelganger/__init__.py",
+ "backup_prefix": ".pre-doppelcompat-",
+ "version_tags": [],
+ "hunks": [
+  {
+   "kind": "replace",
+   "witness": "\u0000not-a-witness\u0000",
+   "anchor": "    digijack._suppress_retiring_projectiles,\n    digijack._hold_server_travel,         # Moonshot compat: a map change waits for the clones\n    digijack._hold_process_travel,\n    digijack._hold_client_travel,\n",
+   "new": "    digijack._suppress_retiring_projectiles,\n",
+   "optional": true
+  },
+  {
+   "kind": "replace",
+   "witness": "    digijack._compat_prepare_map_change,",
+   "anchor": "    digijack._suppress_retiring_projectiles,\n",
+   "new": "    digijack._suppress_retiring_projectiles,\n    digijack._compat_prepare_map_change,    # Moonshot compat: retire clone minds before a map change\n    digijack._compat_commit_map_change,\n"
+  }
+ ]
+}

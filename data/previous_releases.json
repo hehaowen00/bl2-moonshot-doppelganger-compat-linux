@@ -1,0 +1,827 @@
+{
+ "schema": 1,
+ "releases": {
+  "0.9.2": [
+   {
+    "path": "sdk_mods/Doppelganger/__init__.py",
+    "size": 5273,
+    "sha1": "99fc68ec0daf492a2c3d4d346930e82ede93c405"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets.py",
+    "size": 37031,
+    "sha1": "f88584b092e58559d1fefca9de60cb1f194e7354"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/characterslot.py",
+    "size": 100552,
+    "sha1": "92c38f25cbbe3faab26c813d3dc548817542882f"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/classmods.py",
+    "size": 40996,
+    "sha1": "65bb444460dc7c3521a84a8d9c92ddc9b124faba"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/customs.py",
+    "size": 43736,
+    "sha1": "75b947be1420fe51ed6510fb645c6d86f92af0e6"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/diag.py",
+    "size": 3582,
+    "sha1": "ba1c4583a5a12d78f3fbf55353b5a6e539a15cbe"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/digijack.py",
+    "size": 319045,
+    "sha1": "e7d665de48b00023148e703c98f9ef12f30e984e"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/dlcbundle.py",
+    "size": 24789,
+    "sha1": "51507b78ae3133756fb4ec338b9dd832d8064244"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/jackbanks.py",
+    "size": 7879,
+    "sha1": "943679069c68a4ffe210d60e686caa4134dea7a4"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/netdiag.py",
+    "size": 11758,
+    "sha1": "29ca85299097e17dd0bb0b597e3526dcc226550f"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/perf.py",
+    "size": 4004,
+    "sha1": "3e3151db2885a96d7b9ab0107302e07e6f24588d"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/playertick.py",
+    "size": 2496,
+    "sha1": "70f39d9cfbce73263a89391be87610f247738526"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/pylzo.py",
+    "size": 3513,
+    "sha1": "93f305eb664d1fdf4a2a96cf17c8553d553660e6"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/remotejack.py",
+    "size": 13563,
+    "sha1": "315f0fb4bf96175e7d5539ba36726b13d81108c7"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/rooting.py",
+    "size": 14374,
+    "sha1": "6f143efbc1b037e1985061dccdd0159592c2e730"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/skills.py",
+    "size": 229045,
+    "sha1": "7664e87f4e664a71c950b343fb169b16b82c7720"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/upkinflate.py",
+    "size": 6130,
+    "sha1": "2467a3d10b7a362f903aac13c35f8ed6b1546c41"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/wwise_bank_tool.py",
+    "size": 18691,
+    "sha1": "e3b4b36fa679527cfba076c2895630dc9ed051a0"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/customs_table.json",
+    "size": 31291,
+    "sha1": "23b0fda2ceaab6aa5cedda7c9fc524a510a62aad"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/customs_unlocks.json",
+    "size": 34519,
+    "sha1": "d13722ffcdc891cc9bf1004ddd12d67926ce507b"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Doppelganger__Compat__Audio__Audio_Banks_doppelganger.pck.delta",
+    "size": 148467,
+    "sha1": "7719c4a9698e2484b58a2a3646b953fd848cfae5"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Doppelganger__Compat__Audio__Audio_Streaming_doppelganger.pck.delta",
+    "size": 19,
+    "sha1": "61855a8535695a701e6c6c6e9618986596dc3831"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Doppelganger__Compat__Audio__EnglishUS__Audio_Banks_doppelganger.pck.delta",
+    "size": 388,
+    "sha1": "aed9c67acaa517e718c928f60059ed67bb4ab7b8"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Doppelganger__Compat__Audio__EnglishUS__Audio_Streaming_doppelganger.pck.delta",
+    "size": 8253,
+    "sha1": "ce18f6f985278a5e8d22bb512ee8b2bd163f00c0"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Doppelganger__Compat__Config__WillowDlc.ini",
+    "size": 49,
+    "sha1": "c76a7268ce97507056281a34b7bcce87ef29e8f5"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Doppelganger__Compat__Localization__INT__WillowGame.int",
+    "size": 398,
+    "sha1": "f577c958c9d9a0a9179de8430d139d1372250a72"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Doppelganger__Compat__contver.bin",
+    "size": 37,
+    "sha1": "08d4577080b7085ff17df2065e3cec7dce545bc5"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Crustacean_SF.upk.delta",
+    "size": 84693,
+    "sha1": "3200c008df01fee61b79d0672a77414bb2824897"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Default_SF.upk.delta",
+    "size": 9177,
+    "sha1": "c41ee9ff346716fa16ccf5c4ca6de86b836953b2"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_HeadCase_SF.upk.delta",
+    "size": 91832,
+    "sha1": "502b5004dd606f8ff8c138e2ffc29e905a1d4d47"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Jack001_SF.upk.delta",
+    "size": 4511,
+    "sha1": "53ed4804f7e3eaed28e588ebb3b418dc8fd6fa53"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Jack002_SF.upk.delta",
+    "size": 13625,
+    "sha1": "48fc86a21c439eefdcec493cd3beab8402f38cf6"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Jack003_SF.upk.delta",
+    "size": 13759,
+    "sha1": "4ca79f8893c2d83a77321b8cde585117abc2b4d5"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Jack004_SF.upk.delta",
+    "size": 13688,
+    "sha1": "f83e7829fb1d42f35c87115fdfdd0f9f0b360612"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Jack005_SF.upk.delta",
+    "size": 13649,
+    "sha1": "a620317cf5003ad34cb8760386ef8e44331fbf4a"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Jack006_SF.upk.delta",
+    "size": 10816,
+    "sha1": "81655f1e95a54c00e99f984c98a11b70ed15e63b"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Jack007_SF.upk.delta",
+    "size": 13712,
+    "sha1": "3562033a8fb8fdd7bd99ec263e8a488f270f4e28"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Jack008_SF.upk.delta",
+    "size": 13607,
+    "sha1": "99f6227e91c00b0011b11b66d582a378270e2a91"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Jack009_SF.upk.delta",
+    "size": 13604,
+    "sha1": "d46cbb312e9a7d121b09a014d6937c12f95410b0"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Jack011_SF.upk.delta",
+    "size": 13105,
+    "sha1": "480bc89e550c7aac64918e6d0042ae29b360aabc"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Jack012_SF.upk.delta",
+    "size": 13115,
+    "sha1": "93d52a36d9ec91fe7d312a470dff616852a5063a"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_JackPet_SF.upk.delta",
+    "size": 13831,
+    "sha1": "b79c9f655e1abefaf823429a043f51eadf147b43"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Ma_Jack01_SF.upk.delta",
+    "size": 13736,
+    "sha1": "0fee0a46259b7a2ddc084399c91d0a292c007829"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Ma_Jack02_SF.upk.delta",
+    "size": 13671,
+    "sha1": "e45478cfc0e7da829f866093ac20a9befd2838f6"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Ma_Jack03_SF.upk.delta",
+    "size": 14012,
+    "sha1": "5a93b8b300d31a34898897650543c5be57ac0843"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Ma_Jack04_SF.upk.delta",
+    "size": 13891,
+    "sha1": "a2b2f4533ac05cbd4536e4dd3a91f60b505719de"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Ma_Jack07_SF.upk.delta",
+    "size": 13242,
+    "sha1": "7c336256da20bf29881dcc9a9045ac495f2ff9d2"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Ma_Jack08_SF.upk.delta",
+    "size": 13148,
+    "sha1": "4e8d87e1e5acfef229d429438b0d355716c06b6b"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Head_Pumpkin_SF.upk.delta",
+    "size": 31219,
+    "sha1": "8f1b1596df76783be9995928c72519f98a031e16"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_BHarvest_SF.upk.delta",
+    "size": 15013,
+    "sha1": "01e7a25825ddd2d7de37ee0c4ee2bc3e76cf4018"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_BL1_SF.upk.delta",
+    "size": 15928,
+    "sha1": "9e7f351773d0292bc1bc32e147bff3ce3b90f4ce"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_BanditA_SF.upk.delta",
+    "size": 2263,
+    "sha1": "5a485a58df9b9002e5a16f3cf7a8760d71d507f2"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_BanditB_SF.upk.delta",
+    "size": 14708,
+    "sha1": "7d037bb7e5cf583af263c032fc707436e73fa8fc"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_BanditC_SF.upk.delta",
+    "size": 14340,
+    "sha1": "00e7dc39061c4df29e1b8614a00997eeeb682c68"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_BlackA_SF.upk.delta",
+    "size": 13698,
+    "sha1": "d51fb0e8a2f0538cc200162c94aea752084dffd0"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_BlueA_SF.upk.delta",
+    "size": 14396,
+    "sha1": "64dd2083d49b67fc6d40e5497e58868cea1de47e"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_BlueB_SF.upk.delta",
+    "size": 13813,
+    "sha1": "63c5c6e98899320cd4e77cf7fd242f708a8db2b4"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_BlueC_SF.upk.delta",
+    "size": 14059,
+    "sha1": "e14df82a1137f879d1d22c9f8919da83f70f46da"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_BlueD_SF.upk.delta",
+    "size": 1650,
+    "sha1": "8ad3a43d37b0aa752a7b78d2cb8b4a102cf5a165"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_BlueE_SF.upk.delta",
+    "size": 12821,
+    "sha1": "bf8db9e4a659a7dcdb8cd7c4d9171611abdce9aa"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_BlueF_SF.upk.delta",
+    "size": 13410,
+    "sha1": "a27d1820299fad041b75e743692164b180eb1f1e"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_BlueG_SF.upk.delta",
+    "size": 5604,
+    "sha1": "86bc1c600349e7f9286c455b7a23fd0155e67b1b"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_BlueH_SF.upk.delta",
+    "size": 13429,
+    "sha1": "4c72cc2dede7200e695c1af4ae34688259b422fc"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Cricket_SF.upk.delta",
+    "size": 14994,
+    "sha1": "895c03f0d6e2df5bfac27560198299808a8e135e"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_CyanA_SF.upk.delta",
+    "size": 14166,
+    "sha1": "d41255962fb2358ec3c0c954fb567ce23466107e"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_CyanB_SF.upk.delta",
+    "size": 14038,
+    "sha1": "8eedb3a6231bd9e63e59a71e66c5b29200663593"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_CyanC_SF.upk.delta",
+    "size": 13853,
+    "sha1": "179a594887cb626ffd14c70d738f067698fc5520"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_CyanD_SF.upk.delta",
+    "size": 2025,
+    "sha1": "66006ec499efd0b7bd8745450c2c9bebe75f325b"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_CyanE_SF.upk.delta",
+    "size": 13617,
+    "sha1": "6e16e7e1744c6a55a218dbc1befe2429a9044838"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_CyanF_SF.upk.delta",
+    "size": 13428,
+    "sha1": "efc1136f3902077bbe451d9d751bd7433fdfc519"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_CyanG_SF.upk.delta",
+    "size": 13428,
+    "sha1": "ec84dc4297996aaed1877593a8e3e7d50b2b95e1"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_CyanH_SF.upk.delta",
+    "size": 13782,
+    "sha1": "03dfb1423b91ff4127a570744b474253087366c3"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_DahlA_SF.upk.delta",
+    "size": 15633,
+    "sha1": "4c436a4f973b456deb46eb45bc1b4019a7ed72db"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_DahlB_SF.upk.delta",
+    "size": 15561,
+    "sha1": "8b18de5cb9abdcf10094efbc217a22dc31913c3a"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_DahlC_SF.upk.delta",
+    "size": 15889,
+    "sha1": "f85ead3c9326020a5522f7bd55aa1285fa923024"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Default_SF.upk.delta",
+    "size": 27039,
+    "sha1": "375de50b3425179a773babb179b0b863a68df761"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_DigitalEd_SF.upk.delta",
+    "size": 14816,
+    "sha1": "3a145d67c9c58bc68e612d9ba138668f4a9c1434"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Gearbox_SF.upk.delta",
+    "size": 13698,
+    "sha1": "a40148241febb656fe41f844b93de5241e7cbac5"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_GrayA_SF.upk.delta",
+    "size": 13633,
+    "sha1": "65ce13de7cd56d01aa642d370159ce2adccc1998"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_GreenA_SF.upk.delta",
+    "size": 14138,
+    "sha1": "d8c43fadb53a930f4cd37f0e34e43078f11ea9c5"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_GreenB_SF.upk.delta",
+    "size": 5822,
+    "sha1": "2d9cceae8289775f2d3482201e5558f429666e44"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_GreenC_SF.upk.delta",
+    "size": 14304,
+    "sha1": "fae2e0a64d446c18663cf5ea754b6beeca50a28d"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_GreenD_SF.upk.delta",
+    "size": 13414,
+    "sha1": "6b900620f3bb2ecbba00667570ae852419fe6ba7"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_GreenE_SF.upk.delta",
+    "size": 13440,
+    "sha1": "968fc8f81976fccea50b6d535e6fe07ab659560e"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_GreenF_SF.upk.delta",
+    "size": 13893,
+    "sha1": "c4c8aecf7868fc4431048abca7fbbdb95835dea5"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_GreenG_SF.upk.delta",
+    "size": 13427,
+    "sha1": "3ff0800e205b2781d3ada336330e80558e7617ff"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_GreenH_SF.upk.delta",
+    "size": 13745,
+    "sha1": "b12c6bb3a94bd98237bb38fcc384d9f495563d36"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_HyperionA_SF.upk.delta",
+    "size": 13864,
+    "sha1": "e825b1e604961cfba91f3b8f5f8634a18254ab1a"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_HyperionB_SF.upk.delta",
+    "size": 14978,
+    "sha1": "7719d55a720e96bcf02cb894195c798100a179fa"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_HyperionC_SF.upk.delta",
+    "size": 14637,
+    "sha1": "0e329aeb06def247d1647d6d7b5fb97873d9c4f9"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_JackPet_SF.upk.delta",
+    "size": 14566,
+    "sha1": "11e105870e8fb3f11de1d8034b5040fa4e968b6e"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_JakobsA_SF.upk.delta",
+    "size": 15861,
+    "sha1": "ac02aad5c87c0bced8cdca4720c7bd902895d9d2"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_JakobsB_SF.upk.delta",
+    "size": 16420,
+    "sha1": "877de5ef90204f524aac6820ce0ee1f1a0f244b9"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_JakobsC_SF.upk.delta",
+    "size": 16640,
+    "sha1": "409c18d9a4db9baf13878072ebcab9ed82105d6d"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Ma_Jack04_SF.upk.delta",
+    "size": 15042,
+    "sha1": "dffb2e13e1b7e344c2398306e02b68ba4ebb276f"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Ma_Jack05_SF.upk.delta",
+    "size": 14519,
+    "sha1": "806fd19251f35d1c6ef4b1129f9de63bbd989eca"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Ma_Jack06_SF.upk.delta",
+    "size": 14540,
+    "sha1": "6a57f422c661ea2d85a7431d88dd8b78c049233b"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Ma_Jack07_SF.upk.delta",
+    "size": 14529,
+    "sha1": "ed7f254a78ecdd3db63b4a993506be77067afca0"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Ma_Jack08_SF.upk.delta",
+    "size": 14556,
+    "sha1": "3a13dc6185873b1b384d29a98d7d7c428d4033f1"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Ma_Jack09_SF.upk.delta",
+    "size": 15625,
+    "sha1": "c3655b6e19074d91c320c63575f1eb4bd07f4430"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Ma_Jack10_SF.upk.delta",
+    "size": 15284,
+    "sha1": "9ff75703b4e0aca0e2762508563be4f5b8b4273e"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Ma_Jack11_SF.upk.delta",
+    "size": 15693,
+    "sha1": "691e73b6011ad0967f8e7ff0c5fe2642bc00aa5c"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Ma_Jack12_SF.upk.delta",
+    "size": 16125,
+    "sha1": "59364aae7090ea72721233f14d01b553485e80cb"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Ma_Jack13_SF.upk.delta",
+    "size": 14967,
+    "sha1": "ee36d0d909dae25d52aa961f1b48975b62d17bac"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Ma_Jack15_SF.upk.delta",
+    "size": 15238,
+    "sha1": "ab564d74c2591b501f2fdf7da60fbbe70d50ccff"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Ma_Jack16_SF.upk.delta",
+    "size": 15152,
+    "sha1": "d834d6f10b4fa382d936f14bc34c628fa3aa8b2d"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Ma_Jack17_SF.upk.delta",
+    "size": 15615,
+    "sha1": "017b67f6f07302e6cc5467f9092af09a77c7c331"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Ma_Jack18_SF.upk.delta",
+    "size": 15134,
+    "sha1": "023c4fc29c18b830a76d40284ac25015bb13603e"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Ma_Jack19_SF.upk.delta",
+    "size": 15512,
+    "sha1": "9206fa4f8a2b2ebc4ee97d01c0b9a9988d3192d5"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Ma_Jack20_SF.upk.delta",
+    "size": 15236,
+    "sha1": "47665f8821358170bc90b77f7a0429bcb8ea868b"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_MaliwanA_SF.upk.delta",
+    "size": 14740,
+    "sha1": "2f374ef4dad2c5fe2858a8ce35908eaaa64d0b2a"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_MaliwanB_SF.upk.delta",
+    "size": 15334,
+    "sha1": "6fd03d6704ae58aeb7103eb1aa1d07e7f76111c6"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_MaliwanC_SF.upk.delta",
+    "size": 14935,
+    "sha1": "c9ed4ff31b502b5a5f61b8da9353a36c7d3d4488"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_MercDay_SF.upk.delta",
+    "size": 14905,
+    "sha1": "f0c073a10eac5969d32120237a669e5c682f408e"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_MfrUnity_SF.upk.delta",
+    "size": 15238,
+    "sha1": "d79d61330dd0e7b1bc9c4ed298598d9711789e55"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_OrangeA_SF.upk.delta",
+    "size": 13644,
+    "sha1": "25a2669b8439492a20f2c6bf8b3db04b3c3c2d6d"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_OrangeB_SF.upk.delta",
+    "size": 13011,
+    "sha1": "531f68f3299f37de2b1961ee5b310e562dacbfce"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_OrangeC_SF.upk.delta",
+    "size": 1715,
+    "sha1": "a64daa8f2898a4f3ee23e72a9f9951ab9649be02"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_OrangeD_SF.upk.delta",
+    "size": 13525,
+    "sha1": "6d48911ddc1e16dd58a67bc37a0f2a5ed65e0d3f"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_OrangeE_SF.upk.delta",
+    "size": 12859,
+    "sha1": "66712fd0ec1d16723b65d2ac453595188dcc1a79"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_OrangeF_SF.upk.delta",
+    "size": 13265,
+    "sha1": "9f0a85243e7f34b6847ef2e83c4cdfdcd2a326f0"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_OrangeG_SF.upk.delta",
+    "size": 13292,
+    "sha1": "30825cdbbe346f94bb29ba32ce1ed19d30773d10"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_OrangeH_SF.upk.delta",
+    "size": 13285,
+    "sha1": "bc43fe832df1b63e13fbbd5aa4bd36a203e82084"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_Pcorn_SF.upk.delta",
+    "size": 14781,
+    "sha1": "d20d44d6ffb7cd78a9841c43ed1e03b2794dad64"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_PinkA_SF.upk.delta",
+    "size": 13765,
+    "sha1": "31850c716205ef2aee0ce1c5840d5918b781224e"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_PinkB_SF.upk.delta",
+    "size": 13771,
+    "sha1": "479b2bac5eb0052f2fab5b83f2930022fb352ff6"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_PinkC_SF.upk.delta",
+    "size": 13831,
+    "sha1": "d46650cf17016610e39be3c273a42bcd65168f4b"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_PinkD_SF.upk.delta",
+    "size": 13446,
+    "sha1": "37d73e0ced931b5c5d013632657c0a6f3065b113"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_PurpleA_SF.upk.delta",
+    "size": 13958,
+    "sha1": "97a2123fb2fe83a3adc3f4ab43f41cfc3f4ef6a0"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_PurpleB_SF.upk.delta",
+    "size": 12941,
+    "sha1": "a926f37845bc4516ac5a35a80fc19748b4c62e65"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_PurpleC_SF.upk.delta",
+    "size": 14164,
+    "sha1": "4c1e5087ecbc23b094aec5cbfc85e9491822a8d6"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_PurpleD_SF.upk.delta",
+    "size": 13497,
+    "sha1": "9f7a80a9d86ee00ac85322f2ad09cf7e2860a7fb"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_RedA_SF.upk.delta",
+    "size": 13617,
+    "sha1": "8adec64f623fad231ff6ed4bfedf37db259bb8c8"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_RedB_SF.upk.delta",
+    "size": 13441,
+    "sha1": "0814cc01c211be666e30675c94f7ce339f13c191"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_RedC_SF.upk.delta",
+    "size": 13830,
+    "sha1": "b1ca59568d1af14147f76eb807db098b2c2228b8"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_RedD_SF.upk.delta",
+    "size": 1720,
+    "sha1": "762dee0d6301da0d88928c63dc1f5843048c656d"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_RedE_SF.upk.delta",
+    "size": 13431,
+    "sha1": "fc387e3be39f95efbbb25efc02b5774a73f52dfb"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_RedF_SF.upk.delta",
+    "size": 13884,
+    "sha1": "a0886d0f119a9f4b4e25b1c73325c2afb2c82025"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_RedG_SF.upk.delta",
+    "size": 13442,
+    "sha1": "29fcfd4b885cd153583680e0214c05319e836e92"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_RedH_SF.upk.delta",
+    "size": 13425,
+    "sha1": "097566b3cfca45e410bff54b776d287905953909"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_TedioreA_SF.upk.delta",
+    "size": 14954,
+    "sha1": "a6203e2739b9585c79878411a9ab115426a0781e"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_TedioreB_SF.upk.delta",
+    "size": 15821,
+    "sha1": "2a0af2971d0e3986f55823a2999220bfc860a1ec"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_TedioreC_SF.upk.delta",
+    "size": 15909,
+    "sha1": "db7641b27ae950125ed827dcb6ec9dc29a5f6ca3"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_TorgueA_SF.upk.delta",
+    "size": 14936,
+    "sha1": "f82e0411400cc8a69d477ae96e2ac21e56b5c542"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_TorgueB_SF.upk.delta",
+    "size": 15580,
+    "sha1": "462d29bbb613daf2f80a56781fa07fe2dc4f4441"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_TorgueC_SF.upk.delta",
+    "size": 15580,
+    "sha1": "7a31e62d0059fd22af4da179742779788e8ba71d"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_VladofA_SF.upk.delta",
+    "size": 15271,
+    "sha1": "78683163a83f02c8a1d6964f2a922c84d9beb022"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_VladofB_SF.upk.delta",
+    "size": 15399,
+    "sha1": "9547b7595a511cde99c4f21631912efa334553bf"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_VladofC_SF.upk.delta",
+    "size": 15400,
+    "sha1": "0b958d7408e17908777547aa305a76f4b52e1ac4"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_WhiteA_SF.upk.delta",
+    "size": 14258,
+    "sha1": "4bbbc87b93acf06ebaf769351f6d93cfbaf106a9"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_YellowA_SF.upk.delta",
+    "size": 13670,
+    "sha1": "bb1771d34957490470747d3aac97e10f0dfb6ddf"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_YellowB_SF.upk.delta",
+    "size": 13435,
+    "sha1": "9420cbc91c8c415265a7dab283f2e33cb8b1c8a1"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_YellowC_SF.upk.delta",
+    "size": 1772,
+    "sha1": "aface34fffe142660dcde5d6864fd501a5f669cc"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_YellowD_SF.upk.delta",
+    "size": 13354,
+    "sha1": "271badf7a01f4bd05bd4e1364403088a7c6e8538"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_YellowE_SF.upk.delta",
+    "size": 13413,
+    "sha1": "a3a67dc343f036fc19c08b7171d82aba8eff27d1"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_YellowF_SF.upk.delta",
+    "size": 13421,
+    "sha1": "6fa219e2b2082b3b6f50b070b417ead5c85fa8fd"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_YellowG_SF.upk.delta",
+    "size": 13352,
+    "sha1": "a2c10356e04e32a49a37b9c9ca6f138e4ab47031"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__CD_Doppelganger_Skin_YellowH_SF.upk.delta",
+    "size": 13440,
+    "sha1": "25b1627a3c2c69e02a337fe4822e9980e0503e55"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__Doppelganger_Customs.upk.delta",
+    "size": 97089,
+    "sha1": "d4d62f8b7cb5a706746ad0e14845fa99eca81238"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__Doppelganger_Startup_SF.upk.delta",
+    "size": 16125,
+    "sha1": "d7bc16e00c56fb64d34d95e9d5b7b1e11694266e"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__GD_Doppelganger_Streaming_SF.upk.delta",
+    "size": 1015609,
+    "sha1": "6f5815ce8ca3bcd104b0ed9760247996e51e30b3"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/DLC__Tulip__Compat__Content__GuidCache_doppelganger.upk",
+    "size": 21379,
+    "sha1": "5cadb8d5aef46505534d034d044041e63196744a"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/WillowGame__CookedPCConsole__GD_Doppelganger_UI.upk.delta",
+    "size": 28679,
+    "sha1": "115157741679ebbd78af96a3bc4409fd6a9d087c"
+   },
+   {
+    "path": "sdk_mods/Doppelganger/assets/assets_manifest.json",
+    "size": 592348,
+    "sha1": "d4c3889d170a6ac495d6cabf19de7c30030fec1d"
+   }
+  ]
+ }
+}
