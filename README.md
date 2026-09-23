@@ -1,6 +1,6 @@
 # bl2-moonshot-doppelganger-compat-linux
 
-Compatibility patch (r10) that lets the third-party **Doppelganger 0.9.4** mod run next to
+Compatibility patch (r11) that lets the third-party **Doppelganger 0.9.4** mod run next to
 **Project Moonshot v0.1.2** in Borderlands 2, on Linux and Steam Deck. See `README.txt` for what
 it changes and why.
 

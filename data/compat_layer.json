@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "source": "Moonshot compatibility layer for the third-party Doppelganger mod: the 0.9.2 r2 edits plus the shared-root fix (0.9.4 r2)",
+ "source": "Moonshot compatibility layer for the third-party Doppelganger mod: the 0.9.2 r2 edits, the shared-root fix (0.9.4 r2) and the save-slot owner guard (r11)",
  "target": "sdk_mods/moonshot/__init__.py",
  "backup_prefix": ".pre-doppelcompat-",
  "hunks": [
@@ -117,10 +117,41 @@
    "witness": "definition = _find(_doppel_skill_alias(path, pc))",
    "anchor": "            for path, grade in wanted:\n                definition = _find(path)\n",
    "new": "            for path, grade in wanted:\n                definition = _find(_doppel_skill_alias(path, pc))\n"
+  },
+  {
+   "kind": "before",
+   "witness": "def _gun_safety_orphan_sweep(pc=None):",
+   "anchor": "def _gun_safety_read():",
+   "new": "_GUN_SAFETY_OWNER = {\"id\": 0, \"at\": 0.0, \"owner\": {}}\n_GUN_SAFETY_FOREIGN_SAID = set()\n\n\ndef _gun_safety_owner(pc):\n    \"\"\"The live character behind the gun backup: its SaveGuid and class.\n\n    Backups are filed by save-slot number, and BL2 gives a deleted\n    character's number to the next new one. The owner stamp is what tells\n    the two characters apart (doppel-compat r11).\n    \"\"\"\n    if pc is None:\n        return {}\n    save_id = _campaign_save_id(pc)\n    now = time.monotonic()\n    if (save_id and _GUN_SAFETY_OWNER[\"id\"] == save_id\n            and now - _GUN_SAFETY_OWNER[\"at\"] < 5.0):\n        return _GUN_SAFETY_OWNER[\"owner\"]\n    owner = {}\n    try:\n        sg = pc.GetCachedSaveGame()\n    except Exception:\n        sg = None\n    try:\n        guid = sg.SaveGuid\n        parts = tuple(int(getattr(guid, n, 0) or 0) & 0xFFFFFFFF\n                      for n in (\"A\", \"B\", \"C\", \"D\"))\n        if any(parts):\n            owner[\"guid\"] = \"%08x-%08x-%08x-%08x\" % parts\n    except Exception:\n        pass\n    cls = None\n    try:\n        cls = sg.PlayerClassDefinition\n    except Exception:\n        cls = None\n    if cls is None:\n        try:\n            cls = pc.PlayerClass\n        except Exception:\n            cls = None\n    if cls is not None:\n        owner[\"class\"] = str(cls)\n    if save_id:\n        _GUN_SAFETY_OWNER.update(id=save_id, at=now, owner=owner)\n    return owner\n\n\ndef _gun_safety_owner_mismatch(record, owner):\n    \"\"\"Why *record* belongs to another character, or \"\" if it may be used.\n\n    A record without a stamp (written before r11) cannot be checked here;\n    _gun_safety_orphan_sweep retires those once their save file is gone.\n    \"\"\"\n    stamp = record.get(\"owner\") if isinstance(record, dict) else None\n    if not isinstance(stamp, dict) or not owner:\n        return \"\"\n    if stamp.get(\"guid\") and owner.get(\"guid\"):\n        if stamp[\"guid\"] != owner[\"guid\"]:\n            return f\"SaveGuid {stamp['guid']}, live {owner['guid']}\"\n        return \"\"\n    try:\n        switching = bool((_hunter_switch.state or {}).get(\"on\"))\n    except Exception:\n        switching = False\n    if (not switching and stamp.get(\"class\") and owner.get(\"class\")\n            and stamp[\"class\"] != owner[\"class\"]):\n        return f\"class {stamp['class']}, live {owner['class']}\"\n    return \"\"\n\n\ndef _gun_safety_foreign(save_id, record, pc=None):\n    \"\"\"Non-empty when this save's backup was written for another character.\"\"\"\n    try:\n        if pc is None:\n            pc = get_pc()\n    except Exception:\n        pc = None\n    why = _gun_safety_owner_mismatch(record, _gun_safety_owner(pc))\n    if why and (save_id, why) not in _GUN_SAFETY_FOREIGN_SAID:\n        _GUN_SAFETY_FOREIGN_SAID.add((save_id, why))\n        _report([f\"[gun-safety] save {save_id}: the backup under this slot \"\n                 f\"belongs to another character ({why}); not restored\"])\n    return why\n\n\ndef _gun_safety_orphan_park(data, key, record, why):\n    \"\"\"Keep a retired backup under \"orphaned\" instead of deleting it.\"\"\"\n    stamp = time.strftime(\"%Y%m%dT%H%M%S\")\n    parked = data.setdefault(\"orphaned\", {})\n    parked[f\"{key}@{stamp}\"] = {\"why\": why, \"record\": record}\n\n\ndef _gun_safety_orphan_sweep(pc=None):\n    \"\"\"Retire backups whose save file is gone, before New Game reuses the slot.\n\n    Runs on LaunchNewGame, the only point where BL2 hands out a save id.\n    The gun records move under \"orphaned\" in moonshot_tps_guns.json and the\n    per-save sidecars move to moonshot_saves/orphaned/; nothing is deleted.\n    \"\"\"\n    try:\n        roots = [p for p in _campaign_save_data_roots() if p.exists()]\n    except Exception:\n        roots = []\n    if not roots:\n        return 0\n    # The .sav files are the truth: the menu's save list can still name a\n    # character deleted a moment ago. It is only the fallback when the scan\n    # finds no file at all (a save folder this scan does not know).\n    live = set(_save_io.save_ids_on_disk(roots))\n    if not live:\n        try:\n            live = set(_campaign_existing_save_ids(pc))\n        except Exception:\n            live = set()\n    parked = []\n    data = _gun_safety_read()\n    if not _gun_safety.get(\"unreadable\"):\n        saves = data.get(\"saves\") or {}\n        for key in list(saves):\n            try:\n                if int(key) in live:\n                    continue\n            except Exception:\n                continue\n            _gun_safety_orphan_park(data, key, saves.pop(key),\n                                    \"save file deleted\")\n            parked.append(key)\n        if parked:\n            _atomic_json_write(TPS_GUN_FILE, data)\n            _gun_safety[\"cache\"] = data\n    moved = []\n    try:\n        stamp = time.strftime(\"%Y%m%dT%H%M%S\")\n        for side in sorted(MOONSHOT_SAVE_DIR.glob(\"Save*.json\")):\n            match = re.fullmatch(r\"Save([0-9A-Fa-f]{4})\\..+\\.json\", side.name)\n            if not match or int(match.group(1), 16) in live:\n                continue\n            dest = MOONSHOT_SAVE_DIR / \"orphaned\" / f\"{stamp}-{side.name}\"\n            dest.parent.mkdir(exist_ok=True)\n            os.replace(str(side), str(dest))\n            moved.append(side.name)\n    except Exception as exc:\n        _report([f\"[gun-safety] orphan sweep: sidecar move failed: {exc!r}\"])\n    if parked or moved:\n        _report([f\"[gun-safety] orphan sweep: {len(parked)} gun backup(s) \"\n                 f\"({', '.join(parked) or 'none'}) and {len(moved)} \"\n                 f\"sidecar(s) belonged to deleted saves and were retired\"]\n                + [\"  \" + name for name in moved])\n    return len(parked) + len(moved)\n\n\n"
+  },
+  {
+   "kind": "replace",
+   "witness": "            if _gun_safety_foreign(save_id, record):\n                return None\n",
+   "anchor": "        if (isinstance(record, dict)\n                and isinstance(record.get(\"weapons\"), list)):\n            return record\n    except Exception:\n        pass\n    return None\n\n\ndef _gun_safety_snapshot(pc, reason):",
+   "new": "        if (isinstance(record, dict)\n                and isinstance(record.get(\"weapons\"), list)):\n            if _gun_safety_foreign(save_id, record):\n                return None\n            return record\n    except Exception:\n        pass\n    return None\n\n\ndef _gun_safety_snapshot(pc, reason):"
+  },
+  {
+   "kind": "replace",
+   "witness": "    owner = _gun_safety_owner(pc)\n    if isinstance(previous, dict) and _gun_safety_foreign(",
+   "anchor": "    previous = saves.get(key)\n    previous_weapons = (previous.get(\"weapons\", ())",
+   "new": "    previous = saves.get(key)\n    owner = _gun_safety_owner(pc)\n    if isinstance(previous, dict) and _gun_safety_foreign(\n            save_id, previous, pc):\n        _gun_safety_orphan_park(data, key, previous,\n                                \"slot reused by a new character\")\n        previous = None\n    previous_weapons = (previous.get(\"weapons\", ())"
+  },
+  {
+   "kind": "replace",
+   "witness": "    if owner:\n        record[\"owner\"] = owner\n",
+   "anchor": "    record = {\"version\": _TPS_GUN_SAFETY_VERSION, \"weapons\": weapons,\n              \"skills\": skills}\n",
+   "new": "    record = {\"version\": _TPS_GUN_SAFETY_VERSION, \"weapons\": weapons,\n              \"skills\": skills}\n    if owner:\n        record[\"owner\"] = owner\n"
+  },
+  {
+   "kind": "after",
+   "witness": "        _gun_safety_orphan_sweep(get_pc(possibly_loading=True))\n",
+   "anchor": "def _campaign_new_game(obj, _args, _ret, _func):",
+   "new": "    try:\n        _gun_safety_orphan_sweep(get_pc(possibly_loading=True))\n    except Exception as exc:\n        _report([f\"[gun-safety] orphan sweep failed: {exc!r}\"])\n"
   }
  ],
  "version_tags": [
   "doppel-card-lifetime+doppel-compat+",
-  "doppel-own-root+"
+  "doppel-own-root+",
+  "slot-owner-guard+"
  ]
 }

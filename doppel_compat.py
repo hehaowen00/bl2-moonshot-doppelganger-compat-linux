@@ -28,7 +28,7 @@ import zipfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
-PATCH_VERSION = "0.9.4-r10"
+PATCH_VERSION = "0.9.4-r12"
 TESTED_VERSION = "0.9.4"
 TESTED_MANIFEST_SHA1 = "b1ca44534a77630e74ebed1735fded8d0b4d665c"
 RECORD = "moonshot_doppel_compat_manifest.json"      # same record file as the 0.9.2 Windows installer
@@ -260,12 +260,13 @@ def retire_stale(bl2, rows, record, dry_run=False):
 
 
 # --- the compatibility layers ---------------------------------------------------------------------
-# Each layer is a list of text edits for one file: Moonshot's __init__.py, and Doppelganger's
-# digijack.py (the map-change guard). The record keys keep the names the first release used.
+# Each layer is a list of text edits for one file: Moonshot's __init__.py and digi_jacks.py (clone
+# placement), and Doppelganger's digijack.py (the map-change guard). The record keys keep the names the first release used.
 LAYERS = (
     {"file": "compat_layer.json", "label": "Moonshot", "backup": "compat_backup", "written": "compat_written_sha1"},
     {"file": "doppelganger_layer.json", "label": "Doppelganger", "backup": "his_patch_backup", "written": "his_patch_written_sha1"},
     {"file": "doppelganger_init_layer.json", "label": "Doppelganger hooks", "backup": "his_init_backup", "written": "his_init_written_sha1"},
+    {"file": "moonshot_digi_layer.json", "label": "Moonshot Digi-Jacks", "backup": "digi_backup", "written": "digi_written_sha1"},
 )
 
 
